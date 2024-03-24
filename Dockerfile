@@ -20,6 +20,7 @@ EXPOSE 3000
 ENV REACT_APP_TENANT_ID YourTenantIdHere
 ENV REACT_APP_CLIENT_ID YourClientIdHere
 ENV REACT_APP_REDIRECT_URI YourRedirectUriHere
+ENV REACT_APP_BACKEND_CLIENT_ID YourBackendClientId
 
 # start app
 CMD ["npm", "start"]

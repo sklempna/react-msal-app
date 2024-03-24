@@ -19,6 +19,15 @@ const App = () => {
     }
   };
 
+  const getAccessToken = async () => {
+    const request = {
+      scopes: [`api://${process.env.REACT_APP_BACKEND_CLIENT_ID}/.default`],
+      account: account,
+    };
+    const response = await instance.acquireTokenSilent(request);
+    return response.accessToken;
+  };
+
   const getIdTokenClaims = async () => {
     if (account) {
       const response = await instance.acquireTokenSilent({
@@ -46,6 +55,14 @@ const App = () => {
               }}
             >
               Show ID Token
+            </button>
+            <button
+              onClick={async () => {
+                const accessToken = await getAccessToken();
+                alert(`Access Token: ${accessToken}`);
+              }}
+            >
+              Get accessToken
             </button>
           </div>
         )}
